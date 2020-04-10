@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="6">
+    <TextView
+        android:id="@+id/roza_no"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:padding="2dp"
+        android:textSize="14sp"
+        android:text="@string/demo"
+        android:textAlignment="center"
+        android:textColor="@color/main_font"
+        android:background="@drawable/border" />
+    <TextView
+        android:id="@+id/day"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:padding="2dp"
+        android:textSize="14sp"
+        android:text="@string/demo"
+        android:textAlignment="center"
+        android:textColor="@color/main_font"
+        android:background="@drawable/border" />
+    <TextView
+        android:id="@+id/date"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:padding="2dp"
+        android:textSize="14sp"
+        android:text="@string/demo"
+        android:textAlignment="center"
+        android:textColor="@color/main_font"
+        android:background="@drawable/border" />
+    <TextView
+        android:id="@+id/sahri"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:padding="2dp"
+        android:textSize="14sp"
+        android:text="@string/demo"
+        android:textAlignment="center"
+        android:textColor="@color/main_font"
+        android:background="@drawable/border" />
+    <TextView
+        android:id="@+id/fazar"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:padding="2dp"
+        android:textSize="14sp"
+        android:text="@string/demo"
+        android:textAlignment="center"
+        android:textColor="@color/main_font"
+        android:background="@drawable/border" />
+    <TextView
+        android:id="@+id/iftar"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:padding="2dp"
+        android:textSize="14sp"
+        android:text="@string/demo"
+        android:textAlignment="center"
+        android:textColor="@color/main_font"
+        android:background="@drawable/border" />
+</LinearLayout>

@@ -8,12 +8,19 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.provider.AlarmClock;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -30,9 +37,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 public class MainActivity extends AppCompatActivity {
 
     private InterstitialAd mInterstitialAd,mInterstitialAd1,mInterstitialAd2,mInterstitialAd3;
-    TextView[] tv;
-    TextView title;
-    int total_cell=186;
+    TextView arabicYear, englishDate, dayOfWeek, sahriLastTime, fazrTime, iftarTime;
     int startLine,endLine;
     Button buttonSetAlarm,tasbih,doa,karon,sorto,about,onnoelaka;
 //    String roza_no[] = {"১","২","৩","৪","৫","৬","৭","৮","৯","১০","১১","১২","১৩","১৪","১৫","১৬","১৭","১৮","১৯","২০","২১","২২","২৩","২৪","২৫","২৬","২৭","২৮","২৯","৩০"};
@@ -47,34 +52,44 @@ public class MainActivity extends AppCompatActivity {
 //    String iftar[] = {"৬:৩৯","৬:৩৯","৬:৪০","৬:৪০","৬:৪১","৬:৪২","৬:৪২","৬:৪২","৬:৪৩","৬:৪৩","৬:৪৩","৬:৪৪","৬:৪৫","৬:৪৫","৬:৪৬","৬:৪৬","৬:৪৬","৬:৪৭","৬:৪৭","৬:৪৭","৬:৪৮","৬:৪৮","৬:৪৯","৬:৪৯","৬:৫০","৬:৫০","৬:৫০","৬:৫০","৬:৫১","৬:৫১"};
 
     String roza_no[] = {"১","২","৩","৪","৫","৬","৭","৮","৯","১০","১১","১২","১৩","১৪","১৫","১৬","১৭","১৮","১৯","২০","২১","২২","২৩","২৪","২৫","২৬","২৭","২৮","২৯","৩০"};
-    String day[] = {"শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার"};
+    String day[] = {"শনি","রবি","সোম","মঙ্গল","বুধ","বৃহস্পতি","শুক্র"};
     String date[] = {"২৫ এপ্রিল ","২৬ এপ্রিল ","২৭ এপ্রিল ","২৮ এপ্রিল ","২৯ এপ্রিল ","৩০ এপ্রিল ","১ মে","২ মে","৩ মে","৪ মে","৫ মে","৬ মে","৭ মে","৮ মে","৯ মে","১০ মে","১১ মে","১২ মে","১৩ মে","১৪ মে","১৫ মে","১৬ মে","১৭ মে","১৮ মে","১৯ মে","২০ মে","২১ মে","২২ মে","২৩ মে","২৪ মে"};
     String sahri[] = {"৪:০৫","৪:০৪","৪:০৩","৪:০২","৪:০১","৪:০০","৩:৫৯","৩:৫৮","৩:৫৭","৩:৫৫","৩:৫৪","৩:৫৩","৩:৫২","৩:৫১","৩:৫০","৩:৫০","৩:৪৯","৩:৪৯","৩:৪৮","৩:৪৮","৩:৪৭","৩:৪৭","৩:৪৬","৩:৪৬","৩:৪৫","৩:৪৪","৩:৪৪","৩:৪৩","৩:৪৩","৩:৪২"};
     String fazar[] = {"৪:১১","৪:১০","৪:০৯","৪:০৮","৪:০৭","৪:০৬","৪:০৫","৪:০৪","৪:০৩","৪:০০","৪:০০","৩:৫৯","৩:৫৮","৩:৫৭","৩:৫৬","৩:৫৬","৩:৫৫","৩:৫৫","৩:৫৪","৩:৫৪","৩:৫৩","৩:৫৩","৩:৫২","৩:৫২","৩:৫১","৩:৫০","৩:৫০","৩:৪৯","৩:৪৯","৩:৪৮"};
     String iftar[] = {"৬:২৮","৬:২৯","৬:২৯","৬:২৯","৬:৩০","৬:৩০","৬:৩১","৬:৩১","৬:৩২","৬:৩২","৬:৩৩","৬:৩৩","৬:৩৪","৬:৩৪","৬:৩৫","৬:৩৫","৬:৩৬","৬:৩৬","৬:৩৬","৬:৩৭","৬:৩৭","৬:৩৮","৬:৩৮","৬:৩৯","৬:৩৯","৬:৪০","৬:৪০","৬:৪১","৬:৪২","৬:৪২"};
-
-
-
+    int systemDate[] = new int[2];
+    RecyclerView recyclerView;
+    AdapterMainTable adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        arabicYear = findViewById(R.id.tv1);
+        englishDate = findViewById(R.id.tv2);
+        dayOfWeek = findViewById(R.id.tv3);
+        sahriLastTime = findViewById(R.id.tv4);
+        fazrTime = findViewById(R.id.tv5);
+        iftarTime = findViewById(R.id.tv6);
+        buttonSetAlarm = findViewById(R.id.setAlarm);
+        karon = findViewById(R.id.karonBtn);
+        sorto = findViewById(R.id.sortoBtn);
+        doa = findViewById(R.id.doaBtn);
+        tasbih = findViewById(R.id.tasbihBtn);
+        about = findViewById(R.id.About);
+        onnoelaka = findViewById(R.id.onnoElaka);
 
-        buttonSetAlarm = (Button)findViewById(R.id.setAlarm);
-        karon = (Button)findViewById(R.id.karonBtn);
-        sorto = (Button)findViewById(R.id.sortoBtn);
-        doa = (Button)findViewById(R.id.doaBtn);
-        tasbih = (Button)findViewById(R.id.tasbihBtn);
-        about = (Button)findViewById(R.id.About);
-        onnoelaka = (Button)findViewById(R.id.onnoElaka);
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
+
+        arabicYear.setText(R.string.arabic_year);
+        englishDate.setText(R.string.english_year);
+        dayOfWeek.setText(R.string.day_of_week);
+        sahriLastTime.setText(R.string.last_time_of_suhoor);
+        fazrTime.setText(R.string.starting_time_fazr);
+        iftarTime.setText(R.string.Iftaar_time);
+
+        MobileAds.initialize(this, initializationStatus -> {});
         AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -135,273 +150,106 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        onnoelaka.setOnClickListener(view -> {
+            Intent intent2 = new Intent(getApplicationContext(),OtherAreaActivity.class);
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            } else {
+                startActivity(intent2);
+            }
 
-        onnoelaka.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent2 = new Intent(getApplicationContext(),OtherAreaActivity.class);
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
-                    //Toast.makeText (MainActivity.this,"Ad loaded",Toast.LENGTH_LONG).show();
-                } else {
-                   //Toast.makeText(MainActivity.this,"Ad not loaded",Toast.LENGTH_LONG).show();
-                    startActivity(intent2);
-                }
+        });
 
+        doa.setOnClickListener(view -> {
+            if(mInterstitialAd1.isLoaded()){
+                mInterstitialAd1.show();
+            }
+            else {
+                Intent intent2 = new Intent(getApplicationContext(),DoaActivity.class);
+                startActivity(intent2);
             }
         });
-        doa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(mInterstitialAd1.isLoaded()){
-                    mInterstitialAd1.show();
-                }
-                else {
-                    Intent intent2 = new Intent(getApplicationContext(),DoaActivity.class);
-                    startActivity(intent2);
-                }
+
+        karon.setOnClickListener(view -> {
+            if(mInterstitialAd2.isLoaded()){
+                mInterstitialAd2.show();
+            }
+            else {
+                Intent intent3 = new Intent(getApplicationContext(),KaronActivity.class);
+                startActivity(intent3);
             }
         });
-        karon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(mInterstitialAd2.isLoaded()){
-                    mInterstitialAd2.show();
-                }
-                else {
-                    Intent intent3 = new Intent(getApplicationContext(),KaronActivity.class);
-                    startActivity(intent3);
-                }
+
+        tasbih.setOnClickListener(view -> {
+            String title = getString(R.string.tasbih);
+            String message = "তাসবিহ অ্যাপটি ডাউনলোড করতে আপনি কি Google PlayStore - এ যেতে চান?";
+            String buttonName = "tasbih";
+            createDialog(title, message, buttonName);
+        });
+
+        sorto.setOnClickListener(view -> {
+            if(mInterstitialAd3.isLoaded()){
+                mInterstitialAd3.show();
+            }
+            else {
+                Intent intent4 = new Intent(getApplicationContext(),SortoActivity.class);
+                startActivity(intent4);
             }
         });
-        tasbih.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+        buttonSetAlarm.setOnClickListener(v -> {
+            Intent openClockIntent = new Intent(AlarmClock.ACTION_SET_ALARM);
+            openClockIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            getApplicationContext().startActivity(openClockIntent);
+        });
+
+        about.setOnClickListener(view -> {
+            String title = "প্রস্তুতকারক";
+            String message = "আল-আমিন তুষার এবং জাহিদুল ইসলাম \n" +
+                                "কম্পিউটার বিজ্ঞান ও প্রকৌশল বিভাগ \n" +
+                                "জাহাঙ্গীরনগর বিশ্ববিদ্যালয় \n" +
+                                "প্রতিষ্ঠানঃ 3LabGo";
+            createDialog(title, message, "contributors");
+        });
+
+    }
+
+    private void createDialog(String title, String message, String buttonName) {
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle(title);
+        alertDialog.setIcon(R.drawable.dev);
+        alertDialog.setMessage(message);
+        if(buttonName.equals("contributors")) {
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "ঠিক আছে",
+                    (dialog, which) -> dialog.dismiss());
+        }
+        else if(buttonName.equals("tasbih")) {
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "ঠিক আছে", (dialog, which) -> {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("market://details?id=com.alasoft.tk.counter"));
                 startActivity(intent);
-            }
-        });
-        sorto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(mInterstitialAd3.isLoaded()){
-                    mInterstitialAd3.show();
-                }
-                else {
-                    Intent intent4 = new Intent(getApplicationContext(),SortoActivity.class);
-                    startActivity(intent4);
-                }
-            }
-        });
-        buttonSetAlarm.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent openClockIntent = new Intent(AlarmClock.ACTION_SET_ALARM);
-                openClockIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplicationContext().startActivity(openClockIntent);
-            }
-        });
-        about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                alertDialog.setTitle("প্রস্তুতকারক");
-                alertDialog.setIcon(R.drawable.dev);
-                alertDialog.setMessage("আল-আমিন তুষার এবং জাহিদুল ইসলাম \n" +
-                        "কম্পিউটার বিজ্ঞান ও প্রকৌশল বিভাগ \n" +
-                        "জাহাঙ্গীরনগর বিশ্ববিদ্যালয় \n" +
-                        "প্রতিষ্ঠানঃ 3LabGo");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "ঠিক আছে",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
-            }
-        });
+            });
+            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "না", (dialog, which) -> {
+                dialog.cancel();
+            });
+        }
+        alertDialog.show();
+    }
 
 
-        tv = new TextView[total_cell];
-        for(int i=0; i<total_cell; i++) {
-            {
-                String tvID = "tv" + (i+1);
-                int resID = getResources().getIdentifier(tvID, "id", getPackageName());
-                tv[i] = ((TextView) findViewById(resID));
-                if(i<6){
-                    tv[i].setTypeface(null, Typeface.BOLD);
-                    tv[i].setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
-                }
-                else if(i%6==2){
-                    tv[i].setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
-                }
-                else{
-                    tv[i].setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
-                }
-
-            }
-        }
-        title = (TextView) findViewById(R.id.title_here);
-        title.setText("রমজান সময়সূচী ২০২০");
-        tv[0].setText("১৪৪১ হিজরি রমজান");
-        tv[1].setText("২০২০ ইংরেজি");
-        tv[2].setText("বার");
-        tv[3].setText("সাহরীর শেষ সময়");
-        tv[4].setText("ফজরের ওয়াক্ত শুরু");
-        tv[5].setText("ইফতারের সময়");
-        int j=0,k=0,l=0,m=0,n=0,o=0;
-        for(int i=6; i<total_cell ; i=i+6){
-            tv[i].setText(roza_no[j]);
-            j++;
-        }
-        for(int i=7; i<total_cell ; i=i+6){
-            tv[i].setText(date[k]);
-            k++;
-        }
-        for(int i=8; i<total_cell ; i=i+6){
-            tv[i].setText(day[l]);
-            l++;
-        }
-        for(int i=9; i<total_cell ; i=i+6){
-            tv[i].setText(sahri[m]);
-            m++;
-        }
-        for(int i=10; i<total_cell ; i=i+6){
-            tv[i].setText(fazar[n]);
-            n++;
-        }
-        for(int i=11; i<total_cell ; i=i+6){
-            tv[i].setText(iftar[o]);
-            o++;
-        }
+    private void initRecyclerView() {
+        recyclerView = findViewById(R.id.recyclerviewMainPage);
+        adapter = new AdapterMainTable(roza_no, day, date, sahri, fazar, iftar, systemDate, this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        GregorianCalendar today = new GregorianCalendar();
-        int todayMonth = today.get(Calendar.MONTH)+1;
-        int todayDayOfMonth = today.get(Calendar.DAY_OF_MONTH);
-        //System.out.println("Date is--------------->"+todayDayOfMonth+"/"+todayMonth);
-        if(todayMonth==5) {
-            switch (todayDayOfMonth) {
-                case 18:
-                    startLine = 6;
-                    break;
-                case 19:
-                    startLine = 12;
-                    break;
-                case 20:
-                    startLine = 18;
-                    break;
-                case 21:
-                    startLine = 24;
-                    break;
-                case 22:
-                    startLine = 30;
-                    break;
-                case 23:
-                    startLine = 36;
-                    break;
-                case 24:
-                    startLine = 42;
-                    break;
-                case 25:
-                    startLine = 48;
-                    break;
-                case 26:
-                    startLine = 54;
-                    break;
-                case 27:
-                    startLine = 60;
-                    break;
-                case 28:
-                    startLine = 66;
-                    break;
-                case 29:
-                    startLine = 72;
-                    break;
-                case 30:
-                    startLine = 78;
-                    break;
-                case 31:
-                    startLine = 84;
-                    break;
-                default:
-                    startLine = 500;
-                    break;
-            }
-            endLine = startLine + 6;
-            if (startLine < 500) {
-                for (int z = startLine; z < endLine; z++) {
-                    tv[z].setBackgroundResource(R.drawable.border2);
-                    tv[z].setTextColor(Color.parseColor("#ff0000"));
-                }
-            }
-        }
-        if(todayMonth==6){
-            switch (todayDayOfMonth){
-                case 1:
-                    startLine = 90;
-                    break;
-                case 2:
-                    startLine=96;
-                    break;
-                case 3:
-                    startLine=102;
-                    break;
-                case 4:
-                    startLine=108;
-                    break;
-                case 5:
-                    startLine=114;
-                    break;
-                case 6:
-                    startLine=120;
-                    break;
-                case 7:
-                    startLine=126;
-                    break;
-                case 8:
-                    startLine=132;
-                    break;
-                case 9:
-                    startLine=138;
-                    break;
-                case 10:
-                    startLine=144;
-                    break;
-                case 11:
-                    startLine=150;
-                    break;
-                case 12:
-                    startLine=156;
-                    break;
-                case 13:
-                    startLine=162;
-                    break;
-                case 14:
-                    startLine=168;
-                    break;
-                case 15:
-                    startLine=174;
-                    break;
-                case 16:
-                    startLine=180;
-                    break;
-                default:
-                    startLine=500;
-                    break;
-            }
-            endLine = startLine +6;
-            if(startLine<500){
-                for(int z=startLine;z<endLine;z++){
-                    tv[z].setBackgroundResource(R.drawable.border2);
-                    tv[z].setTextColor(Color.parseColor("#ff0000"));
-                }
-            }
-        }
+        Calendar calendar = Calendar.getInstance();
+        systemDate[0] = calendar.get(Calendar.DAY_OF_MONTH);
+        systemDate[1] = calendar.get(Calendar.MONTH);
+        initRecyclerView();
     }
 }

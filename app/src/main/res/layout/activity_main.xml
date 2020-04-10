@@ -11,20 +11,30 @@
         ads:layout_constraintStart_toStartOf="parent"
         ads:layout_constraintTop_toTopOf="parent"
         ads:layout_constraintBottom_toTopOf="@+id/adView"
+        android:background="#c3c3a2"
         android:orientation="vertical">
         <TextView
             android:id="@+id/title_here"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
+            android:textSize="24sp"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="15dp"
+            android:textStyle="bold"
+            android:text="@string/main_title"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"/>
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:background="@drawable/border4">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="3dp"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -34,1518 +44,91 @@
                     <TextView
                         android:id="@+id/tv1"
                         android:layout_weight="1"
+                        android:padding="2dp"
                         android:layout_height="match_parent"
                         android:layout_width="0dp"
                         android:textAlignment="center"
                         android:textStyle="bold"
-                        android:textColor="#ffffff"
-                        android:background="@drawable/border3" />
+                        android:textSize="14sp"
+                        android:textColor="#f3f3f3"
+                        android:background="@drawable/border_top_left_curved" />
                     <TextView
                         android:id="@+id/tv2"
                         android:layout_weight="1"
+                        android:padding="2dp"
                         android:layout_height="match_parent"
                         android:layout_width="0dp"
                         android:textAlignment="center"
                         android:textStyle="bold"
-                        android:textColor="#ffffff"
+                        android:textSize="14sp"
+                        android:textColor="#f3f3f3"
                         android:background="@drawable/border3" />
                     <TextView
                         android:id="@+id/tv3"
                         android:layout_weight="1"
+                        android:padding="2dp"
                         android:layout_height="match_parent"
                         android:layout_width="0dp"
                         android:textAlignment="center"
                         android:textStyle="bold"
-                        android:textColor="#ffffff"
+                        android:textSize="14sp"
+                        android:textColor="#f3f3f3"
                         android:background="@drawable/border3" />
                     <TextView
                         android:id="@+id/tv4"
                         android:layout_weight="1"
+                        android:padding="2dp"
                         android:layout_height="match_parent"
                         android:layout_width="0dp"
                         android:textAlignment="center"
                         android:textStyle="bold"
-                        android:textColor="#ffffff"
+                        android:textSize="14sp"
+                        android:textColor="#f3f3f3"
                         android:background="@drawable/border3" />
                     <TextView
                         android:id="@+id/tv5"
                         android:layout_weight="1"
+                        android:padding="2dp"
                         android:layout_height="match_parent"
                         android:layout_width="0dp"
                         android:textAlignment="center"
                         android:textStyle="bold"
-                        android:textColor="#ffffff"
+                        android:textSize="14sp"
+                        android:textColor="#f3f3f3"
                         android:background="@drawable/border3" />
                     <TextView
                         android:id="@+id/tv6"
                         android:layout_weight="1"
+                        android:padding="2dp"
                         android:layout_height="match_parent"
                         android:layout_width="0dp"
                         android:textAlignment="center"
                         android:textStyle="bold"
-                        android:textColor="#ffffff"
-                        android:background="@drawable/border3" />
+                        android:textSize="14sp"
+                        android:textColor="#f3f3f3"
+                        android:background="@drawable/border_top_right_curved" />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv7"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv8"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv9"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv10"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv11"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv12"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv13"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv14"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv15"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv16"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv17"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv18"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
 
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv19"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv20"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv21"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv22"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv23"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv24"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerviewMainPage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv25"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv26"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv27"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv28"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv29"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv30"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv31"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv32"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv33"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv34"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv35"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv36"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv37"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv38"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv39"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv40"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv41"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv42"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
+                    </androidx.recyclerview.widget.RecyclerView>
 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv43"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv44"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv45"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv46"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv47"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv48"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv49"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv50"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv51"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv52"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv53"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv54"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv55"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv56"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv57"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv58"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv59"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv60"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv61"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv62"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv63"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv64"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv65"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv66"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv67"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv68"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv69"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv70"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv71"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv72"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv73"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv74"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv75"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv76"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv77"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv78"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv79"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv80"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv81"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv82"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv83"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv84"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv85"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv86"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv87"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv88"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv89"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv90"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv91"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv92"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv93"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv94"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv95"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv96"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv97"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv98"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv99"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv100"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv101"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv102"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv103"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv104"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv105"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv106"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv107"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv108"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv109"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv110"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv111"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv112"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv113"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv114"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv115"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv116"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv117"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv118"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv119"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv120"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv121"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv122"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv123"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv124"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv125"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv126"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv127"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv128"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv129"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv130"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv131"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv132"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv133"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv134"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv135"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv136"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv137"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv138"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv139"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv140"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv141"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv142"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv143"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv144"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv145"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv146"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv147"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv148"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv149"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv150"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv151"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv152"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv153"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv154"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv155"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv156"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv157"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv158"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv159"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv160"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv161"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv162"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv163"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv164"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv165"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv166"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv167"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv168"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv169"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv170"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv171"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv172"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv173"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv174"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv175"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv176"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv177"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv178"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv179"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv180"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
-                    <TextView
-                        android:id="@+id/tv181"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv182"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv183"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv184"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv185"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
-                    <TextView
-                        android:id="@+id/tv186"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:textAlignment="center"
-                        android:background="@drawable/border" />
                 </LinearLayout>
                 <Button
                     android:id="@+id/onnoElaka"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:textSize="18sp"
-                    android:text="অন্য জেলাগুলোর সময়ের পার্থক্য"/>
+                    android:text="@string/other_zilla_time_diff"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1556,14 +139,14 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textSize="18sp"
-                        android:text="দোয়া সমূহ"/>
+                        android:text="@string/duas"/>
                     <Button
                         android:id="@+id/karonBtn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textSize="18sp"
-                        android:text="রোজা ভঙ্গের কারন"/>
+                        android:text="@string/reasons_fast_breaks"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1575,7 +158,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="18sp"
-                        android:text="তসবিহ(Ad)"
+                        android:text="@string/tasbih"
                         />
                     <Button
                         android:id="@+id/sortoBtn"
@@ -1583,7 +166,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="18sp"
-                        android:text="রোজা ফরযের শর্ত"
+                        android:text="@string/fast_fard_rules"
                         />
                 </LinearLayout>
                 <Button
@@ -1591,13 +174,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:text="এলার্ম দিন"/>
+                    android:text="@string/alarm_setter"/>
                 <Button
                     android:id="@+id/About"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:text="সৌজন্যে"/>
+                    android:text="@string/contributors"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

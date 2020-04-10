@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">মাহে রমজান ২০২০</string>
+    <string name="demo">---</string>
+    <string name="main_title">রমজান সময়সূচী ২০২০</string>
+    <string name="arabic_year">১৪৪১ হিজরি রমজান</string>
+    <string name="english_year">২০২০ ইংরেজি</string>
+    <string name="day_of_week">বার</string>
+    <string name="last_time_of_suhoor">সাহরীর শেষ সময়</string>
+    <string name="starting_time_fazr">ফজরের ওয়াক্ত শুরু</string>
+    <string name="Iftaar_time">ইফতারের সময়</string>
+    <string name="other_zilla_time_diff">অন্য জেলাগুলোর সময়ের পার্থক্য</string>
+    <string name="duas">দোয়া সমূহ</string>
+    <string name="reasons_fast_breaks">রোজা ভঙ্গের কারন</string>
+    <string name="tasbih">তসবিহ</string>
+    <string name="fast_fard_rules">রোজা ফরযের শর্ত</string>
+    <string name="alarm_setter">এলার্ম দিন</string>
+    <string name="contributors">সৌজন্যে</string>
 </resources>
