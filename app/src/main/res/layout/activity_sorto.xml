@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:text="রোজা ফরজ হওয়ার শর্ত"/>
+            <TextView
+                android:id="@+id/msg1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="\n* মুসলিম হওয়া। অমুসলিমের ওপর রোজার বিধান নেই। \n
+* প্রাপ্ত বয়স্ক হওয়া। অপ্রাপ্ত বয়স্ক ছেলে মেয়ের ওপর রোজা ফরজ নয়। \n
+* জ্ঞান সম্পর্ণ হওয়া। অর্থাৎ মস্তিষ্ক বিকৃত (পাগল) লোকের ওপর রোজা ফরজ নয়। \n
+* হায়েয তথা ঋতুকাল এবং নিফাস তথা সন্তান জন্মদান পরবর্তী সময়ে পবিত্র থাকা। মহিলাদের হাফেজ ও নিফাসের সময়ে রোজা রাখা যাবে না। হায়েজ-নিফাসের কারণে যে কয়টা রোজা ভঙ্গ হবে, তা পরবর্তীতে কাজা করে নিতে হবে। \n
+* রোজা পালন সামর্থবান হওয়া। \n
+* শরয়ী মুসাফির না হওয়া। কারণ মুসাফিরের জন্য রোজা ফরজ নয়। \n"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

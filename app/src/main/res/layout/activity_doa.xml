@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:text="রোজার নিয়ত"/>
+
+            <TextView
+                android:id="@+id/subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="আরবী:"
+                android:textSize="20sp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/msg1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="نويت ان اصوم غدا من شهر رمضان المبارك فرضا لك ياالله فتقبل منى انك انت السميع العليم."
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/subtitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="উচ্চারণ:"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/msg2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="নাওয়াইতু আন আছুমা গদাম মিং শাহরি রমাদ্বানাল মুবারকি ফারদ্বল্লাকা ইয়া আল্লাহু ফাতাক্বব্বাল মিন্নী ইন্নাকা আংতাস সামীউল আলীম।"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/subtitle3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="অর্থ:"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/msg3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="আয় আল্লাহ পাক! আপনার সন্তুষ্টির জন্য আগামীকালের রমাদ্বান শরীফ-এর ফরয রোযা রাখার নিয়ত করছি। আমার তরফ থেকে আপনি তা কবুল করুন। নিশ্চয়ই আপনি সর্বশ্রোতা , সর্বজ্ঞাত।"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/title2"
+                android:text="ইফতারের দোয়া"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:id="@+id/subtitle4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="আরবী:"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/msg4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" اللهم لك صمت و على رزقك افطرت."
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/subtitle5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="উচ্চারণ:"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/msg5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="আল্লাহুম্মা লাকা ছুমতু ওয়া তাওয়াক্কালতু আ'লা রিজক্বিকা ওয়া আফতারতু বি রাহমাতিকা ইয়া আর্ হামার রা-হিমীন।"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/subtitle6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="অর্থ:"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/msg6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="হে আল্লাহ তায়ালা আমি আপনার নির্দেশিত মাহে রমাজানের ফরয রোজা শেষে আপনারই নির্দেশিত আইন মেনেই রোজার পরিসমাপ্তি করছি ও রহমতের আশা নিয়ে ইফতার আরম্ভ করিতেছি। "
+                android:textSize="18sp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/title3"
+                android:text="তারাবি নামাজের নিয়ত"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:id="@+id/subtitle7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="আরবী:"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/msg7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="نويت ان اصلى لله تعالى ركعتى صلوة التراويح سنة رسول الله تعالى متوجها الى جهة الكعبة الشريفة الله اكبر."
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/subtitle8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="উচ্চারণ:"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/msg8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="নাওয়াইতু আন উসাল্লিয়া লিল্লাহি তা’আলা, রকাআতাই সালাতিত তারাবিহ সুন্নাতু রাসুলিল্লাহি তা’আলা, মুতাওয়াজ্জিহান ইলা জিহাতিল কা’বাতিশ শারিফাতি, আল্লাহু আকবার।"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/subtitle9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="অর্থ:"
+                android:textSize="20sp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/msg9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:text="আমি ক্বিবলামুখি হয়ে দু’রাকাআত তারাবিহ সুন্নতে মুয়াক্কাদাহ নামাজের নিয়ত করছি। আল্লাহু আকবার।"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
