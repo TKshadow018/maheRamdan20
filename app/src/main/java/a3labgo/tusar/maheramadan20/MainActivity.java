@@ -1,6 +1,7 @@
 package a3labgo.tusar.maheramadan20;
 
 import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.provider.AlarmClock;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +18,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
@@ -33,8 +36,10 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
+import a3labgo.tusar.maheramadan20.TimerFragments.TimePickerFragment;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
     private InterstitialAd mInterstitialAd,mInterstitialAd1,mInterstitialAd2,mInterstitialAd3;
     TextView arabicYear, englishDate, dayOfWeek, sahriLastTime, fazrTime, iftarTime;
@@ -198,9 +203,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         buttonSetAlarm.setOnClickListener(v -> {
-            Intent openClockIntent = new Intent(AlarmClock.ACTION_SET_ALARM);
-            openClockIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            getApplicationContext().startActivity(openClockIntent);
+
+//            Intent openClockIntent = new Intent(AlarmClock.ACTION_SET_ALARM);
+//            openClockIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            getApplicationContext().startActivity(openClockIntent);
+            DialogFragment timePicker = new TimePickerFragment();
+            timePicker.show(getSupportFragmentManager(), "time picker");
         });
 
         about.setOnClickListener(view -> {
@@ -251,5 +259,11 @@ public class MainActivity extends AppCompatActivity {
         systemDate[0] = calendar.get(Calendar.DAY_OF_MONTH);
         systemDate[1] = calendar.get(Calendar.MONTH);
         initRecyclerView();
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        System.out.println("hour: "+hourOfDay+"  minute: "+minute);
+        //edit here
     }
 }
