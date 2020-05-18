@@ -190,7 +190,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-9447458149465385/8295314189"
+        ads:adUnitId="@string/banner_ad_unit_id_main"
         ads:layout_constraintTop_toBottomOf="@+id/top_header"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"

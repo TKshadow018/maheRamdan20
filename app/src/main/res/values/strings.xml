@@ -15,4 +15,14 @@
     <string name="fast_fard_rules">রোজা ফরযের শর্ত</string>
     <string name="alarm_setter">এলার্ম দিন</string>
     <string name="contributors">সৌজন্যে</string>
+    <string name="msg_token_fmt">InstanceID Token: %s</string>
+
+    <string name="banner_ad_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_ad_unit_id_main">ca-app-pub-9447458149465385/8295314189</string>
+    <string name="banner_ad_unit_id_doa">ca-app-pub-9447458149465385/5421175153</string>
+    <string name="banner_ad_unit_id_karon">ca-app-pub-9447458149465385/3916521798</string>
+    <string name="banner_ad_unit_id_sorto">ca-app-pub-9447458149465385/2618724323</string>
+    <string name="banner_ad_unit_id_others">ca-app-pub-9447458149465385/1305642656</string>
+
+
 </resources>

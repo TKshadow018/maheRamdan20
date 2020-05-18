@@ -1,41 +1,24 @@
 package a3labgo.tusar.maheramadan20;
-
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.net.Uri;
-import android.provider.AlarmClock;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
-import android.util.TypedValue;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
-
-import java.nio.charset.StandardCharsets;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-
-
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.iid.FirebaseInstanceId;
 import a3labgo.tusar.maheramadan20.TimerFragments.TimePickerFragment;
 
 
@@ -45,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     TextView arabicYear, englishDate, dayOfWeek, sahriLastTime, fazrTime, iftarTime;
     int startLine,endLine;
     Button buttonSetAlarm,tasbih,doa,karon,sorto,about,onnoelaka;
+    AdView mAdView;
 //    String roza_no[] = {"১","২","৩","৪","৫","৬","৭","৮","৯","১০","১১","১২","১৩","১৪","১৫","১৬","১৭","১৮","১৯","২০","২১","২২","২৩","২৪","২৫","২৬","২৭","২৮","২৯","৩০"};
 //    //String day[] = {"বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার"};
 //    String day[] = {"শুক্র","শনি","রবি","সোম","মঙ্গল","বুধ","বৃহস্পতি","শুক্র","শনি","রবি","সোম","মঙ্গল","বুধ","বৃহস্পতি","শুক্র","শনি","রবি","সোম","মঙ্গল","বুধ","বৃহস্পতি","শুক্র","শনি","রবি","সোম","মঙ্গল","বুধ","বৃহস্পতি","শুক্র","শনি"};
@@ -71,6 +55,24 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+            .addOnCompleteListener(task -> {
+                if (!task.isSuccessful()) {
+                    return;
+                }
+                // Get new Instance ID token
+                String token = task.getResult().getToken();
+                // Log and toast
+                String msg = getString(R.string.msg_token_fmt, token);
+                System.out.println(msg);
+            });
+
         arabicYear = findViewById(R.id.tv1);
         englishDate = findViewById(R.id.tv2);
         dayOfWeek = findViewById(R.id.tv3);
@@ -86,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         onnoelaka = findViewById(R.id.onnoElaka);
 
 
-
         arabicYear.setText(R.string.arabic_year);
         englishDate.setText(R.string.english_year);
         dayOfWeek.setText(R.string.day_of_week);
@@ -94,9 +95,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         fazrTime.setText(R.string.starting_time_fazr);
         iftarTime.setText(R.string.Iftaar_time);
 
-        MobileAds.initialize(this, initializationStatus -> {});
-        AdView mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        MobileAds.initialize(this, initializationStatus -> {
+        });
+        mAdView = findViewById(R.id.adView);
+        adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
         ///////////////////////////////////////////ad initialize/////////////////////////////////
@@ -104,8 +106,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         //MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd1 = new InterstitialAd(this);
-        mInterstitialAd2= new InterstitialAd(this);
-        mInterstitialAd3= new InterstitialAd(this);
+        mInterstitialAd2 = new InterstitialAd(this);
+        mInterstitialAd3 = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-9447458149465385/9820148847");                 //for release
         mInterstitialAd1.setAdUnitId("ca-app-pub-9447458149465385/3820597142");                 //for release
         mInterstitialAd2.setAdUnitId("ca-app-pub-9447458149465385/4978885708");                 //for release
@@ -118,37 +120,33 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         //mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
 
 
-        mInterstitialAd.setAdListener(new AdListener()
-        {
-            public void onAdClosed(){
-                Intent intent2 = new Intent(getApplicationContext(),OtherAreaActivity.class);
+        mInterstitialAd.setAdListener(new AdListener() {
+            public void onAdClosed() {
+                Intent intent2 = new Intent(getApplicationContext(), OtherAreaActivity.class);
                 startActivity(intent2);
                 //mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
                 mInterstitialAd.loadAd(new AdRequest.Builder().build());
             }
         });
-        mInterstitialAd1.setAdListener(new AdListener()
-        {
-            public void onAdClosed(){
-                Intent intent2 = new Intent(getApplicationContext(),DoaActivity.class);
+        mInterstitialAd1.setAdListener(new AdListener() {
+            public void onAdClosed() {
+                Intent intent2 = new Intent(getApplicationContext(), DoaActivity.class);
                 startActivity(intent2);
                 //mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
                 mInterstitialAd1.loadAd(new AdRequest.Builder().build());
             }
         });
-        mInterstitialAd2.setAdListener(new AdListener()
-        {
-            public void onAdClosed(){
-                Intent intent2 = new Intent(getApplicationContext(),KaronActivity.class);
+        mInterstitialAd2.setAdListener(new AdListener() {
+            public void onAdClosed() {
+                Intent intent2 = new Intent(getApplicationContext(), KaronActivity.class);
                 startActivity(intent2);
                 //mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
                 mInterstitialAd2.loadAd(new AdRequest.Builder().build());
             }
         });
-        mInterstitialAd3.setAdListener(new AdListener()
-        {
-            public void onAdClosed(){
-                Intent intent2 = new Intent(getApplicationContext(),SortoActivity.class);
+        mInterstitialAd3.setAdListener(new AdListener() {
+            public void onAdClosed() {
+                Intent intent2 = new Intent(getApplicationContext(), SortoActivity.class);
                 startActivity(intent2);
                 //mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
                 mInterstitialAd3.loadAd(new AdRequest.Builder().build());
@@ -156,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
 
         onnoelaka.setOnClickListener(view -> {
-            Intent intent2 = new Intent(getApplicationContext(),OtherAreaActivity.class);
+            Intent intent2 = new Intent(getApplicationContext(), OtherAreaActivity.class);
             if (mInterstitialAd.isLoaded()) {
                 mInterstitialAd.show();
             } else {
@@ -166,21 +164,19 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
 
         doa.setOnClickListener(view -> {
-            if(mInterstitialAd1.isLoaded()){
+            if (mInterstitialAd1.isLoaded()) {
                 mInterstitialAd1.show();
-            }
-            else {
-                Intent intent2 = new Intent(getApplicationContext(),DoaActivity.class);
+            } else {
+                Intent intent2 = new Intent(getApplicationContext(), DoaActivity.class);
                 startActivity(intent2);
             }
         });
 
         karon.setOnClickListener(view -> {
-            if(mInterstitialAd2.isLoaded()){
+            if (mInterstitialAd2.isLoaded()) {
                 mInterstitialAd2.show();
-            }
-            else {
-                Intent intent3 = new Intent(getApplicationContext(),KaronActivity.class);
+            } else {
+                Intent intent3 = new Intent(getApplicationContext(), KaronActivity.class);
                 startActivity(intent3);
             }
         });
@@ -193,11 +189,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
 
         sorto.setOnClickListener(view -> {
-            if(mInterstitialAd3.isLoaded()){
+            if (mInterstitialAd3.isLoaded()) {
                 mInterstitialAd3.show();
-            }
-            else {
-                Intent intent4 = new Intent(getApplicationContext(),SortoActivity.class);
+            } else {
+                Intent intent4 = new Intent(getApplicationContext(), SortoActivity.class);
                 startActivity(intent4);
             }
         });
@@ -214,12 +209,16 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         about.setOnClickListener(view -> {
             String title = "প্রস্তুতকারক";
             String message = "আল-আমিন তুষার এবং জাহিদুল ইসলাম \n" +
-                                "কম্পিউটার বিজ্ঞান ও প্রকৌশল বিভাগ \n" +
-                                "জাহাঙ্গীরনগর বিশ্ববিদ্যালয় \n" +
-                                "প্রতিষ্ঠানঃ 3LabGo";
+                    "কম্পিউটার বিজ্ঞান ও প্রকৌশল বিভাগ \n" +
+                    "জাহাঙ্গীরনগর বিশ্ববিদ্যালয় \n" +
+                    "প্রতিষ্ঠানঃ 3LabGo";
             createDialog(title, message, "contributors");
         });
 
+        // ATTENTION: This was auto-generated to handle app links.
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
     }
 
     private void createDialog(String title, String message, String buttonName) {

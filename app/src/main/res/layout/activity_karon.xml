@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    ads:layout_constraintEnd_toEndOf="parent"
+    ads:layout_constraintStart_toStartOf="parent"
+    ads:layout_constraintTop_toTopOf="parent"
+    ads:layout_constraintBottom_toTopOf="@+id/adView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ScrollView
@@ -89,6 +97,18 @@
 * কোনো রোগীর ক্ষুধা বা পিপাসা এমন পর্যায়ে চলে গেল এবং কোনো দ্বীনদার মুসলিম চিকিৎসকের মতে রোজা ভঙ্গ না করলে তখন মৃত্যুর আশঙ্কা আছে। তবে রোযা ভঙ্গ করা ওয়াজিব। পরে তা কাযা করতে হবে। \n
 * হায়েজ-নেফাসগ্রস্ত (বিশেষ সময়ে) নারীদের জন্য রোজা রাখা জায়েজ নয়। পরবর্তীতে কাযা করতে হবে। \n"
                 android:textSize="18sp" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id_karon"
+        ads:layout_constraintTop_toBottomOf="@+id/top_header"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintStart_toStartOf="parent">
+    </com.google.android.gms.ads.AdView>
+</androidx.constraintlayout.widget.ConstraintLayout>
