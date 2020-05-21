@@ -1,17 +1,33 @@
 package a3labgo.tusar.maheramadan20;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
+
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -21,32 +37,21 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import a3labgo.tusar.maheramadan20.TimerFragments.TimePickerFragment;
 
-
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
     private InterstitialAd mInterstitialAd,mInterstitialAd1,mInterstitialAd2,mInterstitialAd3;
     TextView arabicYear, englishDate, dayOfWeek, sahriLastTime, fazrTime, iftarTime;
-    int startLine,endLine;
     Button buttonSetAlarm,tasbih,doa,karon,sorto,about,onnoelaka;
     AdView mAdView;
-//    String roza_no[] = {"১","২","৩","৪","৫","৬","৭","৮","৯","১০","১১","১২","১৩","১৪","১৫","১৬","১৭","১৮","১৯","২০","২১","২২","২৩","২৪","২৫","২৬","২৭","২৮","২৯","৩০"};
-//    //String day[] = {"বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার","রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার"};
-//    String day[] = {"শুক্র","শনি","রবি","সোম","মঙ্গল","বুধ","বৃহস্পতি","শুক্র","শনি","রবি","সোম","মঙ্গল","বুধ","বৃহস্পতি","শুক্র","শনি","রবি","সোম","মঙ্গল","বুধ","বৃহস্পতি","শুক্র","শনি","রবি","সোম","মঙ্গল","বুধ","বৃহস্পতি","শুক্র","শনি"};
-//    String date[] = {"১৮ মে","১৯ মে","২০ মে","২১ মে","২২ মে","২৩ মে","২৪ মে","২৫ মে","২৬ মে","২৭ মে","২৮ মে","২৯ মে","৩০ মে","৩১ মে","১ জুন","২ জুন","৩ জুন","৪ জুন","৫ জুন","৬ জুন","৭ জুন","৮ জুন","৯ জুন","১০ জুন","১১ জুন","১২ জুন","১৩ জুন","১৪ জুন","১৫ জুন","১৬ জুন"};
-////    String sahri[] = {"৩:৪৬","৩:৪৫","৩:৪৫","৩:৪৪","৩:৪৩","৩:৪৩","৩:৪২","৩:৪২","৩:৪২","৩:৪২","৩:৪১","৩:৪১","৩:৪০","৩:৪০","৩:৩৯","৩:৩৯","৩:৩৯","৩:৩৯","৩:৩৯","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮"};
-////    String fazar[] = {"৩:৫২","৩:৫১","৩:৫০","৩:৫০","৩:৪৯","৩:৪৯","৩:৪৮","৩:৪৮","৩:৪৮","৩:৪৭","৩:৪৭","৩:৪৭","৩:৪৬","৩:৪৬","৩:৪৫","৩:৪৫","৩:৪৫","৩:৪৫","৩:৪৫","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪"};
-////    String iftar[] = {"৬:৩৯","৬:৩৯","৬:৪০","৬:৪০","৬:৪১","৬:৪১","৬:৪২","৬:৪২","৬:৪৩","৬:৪৩","৬:৪৪","৬:৪৪","৬:৪৫","৬:৪৫","৬:৪৫","৬:৪৬","৬:৪৬","৬:৪৬","৬:৪৭","৬:৪৭","৬:৪৭","৬:৪৮","৬:৪৮","৬:৪৯","৬:৪৯","৬:৫০","৬:৫০","৬:৫০","৬:৫১","৬:৫১"};
-//    String sahri[] = {"৩:৪৬","৩:৪৫","৩:৪৪","৩:৪৪","৩:৪৩","৩:৪৩","৩:৪২","৩:৪২","৩:৪১","৩:৪১","৩:৪০","৩:৪০","৩:৪০","৩:৩৯","৩:৩৯","৩:৩৯","৩:৩৯","৩:৩৯","৩:৩৯","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৮","৩:৩৭","৩:৩৮","৩:৩৮","৩:৩৮"};
-//    String fazar[] = {"৩:৫২","৩:৫১","৩:৫০","৩:৫০","৩:৪৯","৩:৪৯","৩:৪৮","৩:৪৮","৩:৪৭","৩:৪৭","৩:৪৬","৩:৪৬","৩:৪৬","৩:৪৫","৩:৪৫","৩:৪৫","৩:৪৫","৩:৪৫","৩:৪৫","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৪","৩:৪৩","৩:৪৪","৩:৪৪","৩:৪৪"};
-//    String iftar[] = {"৬:৩৯","৬:৩৯","৬:৪০","৬:৪০","৬:৪১","৬:৪২","৬:৪২","৬:৪২","৬:৪৩","৬:৪৩","৬:৪৩","৬:৪৪","৬:৪৫","৬:৪৫","৬:৪৬","৬:৪৬","৬:৪৬","৬:৪৭","৬:৪৭","৬:৪৭","৬:৪৮","৬:৪৮","৬:৪৯","৬:৪৯","৬:৫০","৬:৫০","৬:৫০","৬:৫০","৬:৫১","৬:৫১"};
+//    private TextView mOutputText;
+    ArrayList<String> roza_no;
+    ArrayList<String> day;
+    ArrayList<String> date;
+    ArrayList<String> sahri;
+    ArrayList<String> fazar;
+    ArrayList<String> iftar;
 
-    String roza_no[] = {"১","২","৩","৪","৫","৬","৭","৮","৯","১০","১১","১২","১৩","১৪","১৫","১৬","১৭","১৮","১৯","২০","২১","২২","২৩","২৪","২৫","২৬","২৭","২৮","২৯","৩০"};
-    String day[] = {"শনি","রবি","সোম","মঙ্গল","বুধ","বৃহস্পতি","শুক্র"};
-    String date[] = {"২৫ এপ্রিল ","২৬ এপ্রিল ","২৭ এপ্রিল ","২৮ এপ্রিল ","২৯ এপ্রিল ","৩০ এপ্রিল ","১ মে","২ মে","৩ মে","৪ মে","৫ মে","৬ মে","৭ মে","৮ মে","৯ মে","১০ মে","১১ মে","১২ মে","১৩ মে","১৪ মে","১৫ মে","১৬ মে","১৭ মে","১৮ মে","১৯ মে","২০ মে","২১ মে","২২ মে","২৩ মে","২৪ মে"};
-    String sahri[] = {"৪:০৫","৪:০৪","৪:০৩","৪:০২","৪:০১","৪:০০","৩:৫৯","৩:৫৮","৩:৫৭","৩:৫৫","৩:৫৪","৩:৫৩","৩:৫২","৩:৫১","৩:৫০","৩:৫০","৩:৪৯","৩:৪৯","৩:৪৮","৩:৪৮","৩:৪৭","৩:৪৭","৩:৪৬","৩:৪৬","৩:৪৫","৩:৪৪","৩:৪৪","৩:৪৩","৩:৪৩","৩:৪২"};
-    String fazar[] = {"৪:১১","৪:১০","৪:০৯","৪:০৮","৪:০৭","৪:০৬","৪:০৫","৪:০৪","৪:০৩","৪:০০","৪:০০","৩:৫৯","৩:৫৮","৩:৫৭","৩:৫৬","৩:৫৬","৩:৫৫","৩:৫৫","৩:৫৪","৩:৫৪","৩:৫৩","৩:৫৩","৩:৫২","৩:৫২","৩:৫১","৩:৫০","৩:৫০","৩:৪৯","৩:৪৯","৩:৪৮"};
-    String iftar[] = {"৬:২৮","৬:২৯","৬:২৯","৬:২৯","৬:৩০","৬:৩০","৬:৩১","৬:৩১","৬:৩২","৬:৩২","৬:৩৩","৬:৩৩","৬:৩৪","৬:৩৪","৬:৩৫","৬:৩৫","৬:৩৬","৬:৩৬","৬:৩৬","৬:৩৭","৬:৩৭","৬:৩৮","৬:৩৮","৬:৩৯","৬:৩৯","৬:৪০","৬:৪০","৬:৪১","৬:৪২","৬:৪২"};
-    int systemDate[] = new int[2];
+    int[] systemDate = new int[2];
     RecyclerView recyclerView;
     AdapterMainTable adapter;
 
@@ -54,6 +59,14 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ///////////////////////////////////////Data List////////////////////////////////////
+        date = new ArrayList<>();
+        roza_no = new ArrayList<>();
+        sahri = new ArrayList<>();
+        fazar = new ArrayList<>();
+        iftar = new ArrayList<>();
+        day = new ArrayList<>();
 
         FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
@@ -94,6 +107,18 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         sahriLastTime.setText(R.string.last_time_of_suhoor);
         fazrTime.setText(R.string.starting_time_fazr);
         iftarTime.setText(R.string.Iftaar_time);
+
+        if(!readFomSavedFiles()){
+            addAllData();
+        }
+
+        System.out.println("------------------------------");
+        System.out.println("r"+date.size());
+        System.out.println("s"+sahri.size());
+        System.out.println("f"+fazar.size());
+        System.out.println("i"+iftar.size());
+        System.out.println("------------------------------");
+
 
         MobileAds.initialize(this, initializationStatus -> {
         });
@@ -207,6 +232,33 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
 
         about.setOnClickListener(view -> {
+//            SharedPreferences pref = getSharedPreferences("all_reqired_data",MODE_PRIVATE);
+//            SharedPreferences.Editor scoreEditor = pref.edit();
+//            Set<String> dateSet = new HashSet<>(date);
+//            Set<String> sahriSet = new HashSet<>(sahri);
+//            Set<String> fazarSet = new HashSet<>(fazar);
+//            Set<String> iftarSet = new HashSet<>(iftar);
+//            for (String temp : iftarSet){
+//                System.out.println(temp+":-> "+iftarSet.size()+" = "+iftar.size());
+//            }
+//            scoreEditor.putStringSet("fazar", fazarSet);
+//            scoreEditor.putStringSet("dateofRamdan", dateSet);
+//            scoreEditor.putStringSet("sahri", sahriSet);
+//            scoreEditor.putStringSet("iftar", iftarSet);
+//            System.out.println("((------------------------------");
+//            System.out.println("d"+date.size());
+//            System.out.println("s"+sahri.size());
+//            System.out.println("f"+fazar.size());
+//            System.out.println("i"+iftar.size());
+//            System.out.println("------------------------------))");
+//            scoreEditor.apply();
+//            System.out.println("d"+dateSet.size());
+//            System.out.println("i"+iftarSet.size());
+//            System.out.println("s"+sahriSet.size());
+//            System.out.println("f"+fazarSet.size());
+
+//            getResultsFromApi();
+
             String title = "প্রস্তুতকারক";
             String message = "আল-আমিন তুষার এবং জাহিদুল ইসলাম \n" +
                     "কম্পিউটার বিজ্ঞান ও প্রকৌশল বিভাগ \n" +
@@ -221,6 +273,234 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         Uri appLinkData = appLinkIntent.getData();
     }
 
+    private boolean readFomSavedFiles() {
+        // set up variables
+        String dateFile = "dates.txt";
+        String sahriFile = "sehri.txt";
+        String fazarFile = "fazar.txt";
+        String iftarFile = "iftar.txt";
+        String line;
+        try {
+            FileInputStream file = openFileInput(dateFile);
+            FileInputStream file1 = openFileInput(sahriFile);
+            FileInputStream file2 = openFileInput(fazarFile);
+            FileInputStream file3 = openFileInput(iftarFile);
+
+            BufferedReader input = new BufferedReader(new InputStreamReader(file));
+            BufferedReader input1 = new BufferedReader(new InputStreamReader(file1));
+            BufferedReader input2 = new BufferedReader(new InputStreamReader(file2));
+            BufferedReader input3 = new BufferedReader(new InputStreamReader(file3));
+            if (!input.ready() || !input2.ready() || !input3.ready() || !input1.ready() ) {
+                System.out.println("input not ready");
+                throw new IOException();
+            }else {
+                date.clear();
+                sahri.clear();
+                fazar.clear();
+                iftar.clear();
+                while ((line = input.readLine()) != null) {
+                    date.add(line);
+                }
+                while ((line = input1.readLine()) != null) {
+                    sahri.add(line);
+                }
+                while ((line = input2.readLine()) != null) {
+                    fazar.add(line);
+                }
+                while ((line = input3.readLine()) != null) {
+                    iftar.add(line);
+                }
+                addfixedData();
+                System.out.println("Reading from File");
+            }
+            input.close();
+            input1.close();
+            input2.close();
+            input3.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    private void addAllData() {
+        System.out.println("From Default Area");
+        date.clear();
+        date.add("২৫ এপ্রিল");
+        date.add("২৬ এপ্রিল");
+        date.add("২৭ এপ্রিল");
+        date.add("২৮ এপ্রিল");
+        date.add("২৯ এপ্রিল");
+        date.add("৩০ এপ্রিল");
+        date.add("১ মে");
+        date.add("২ মে");
+        date.add("৩ মে");
+        date.add("৪ মে");
+        date.add("৫ মে");
+        date.add("৬ মে");
+        date.add("৭ মে");
+        date.add("৮ মে");
+        date.add("৯ মে");
+        date.add("১০ মে");
+        date.add("১১ মে");
+        date.add("১২ মে");
+        date.add("১৩ মে");
+        date.add("১৪ মে");
+        date.add("১৫ মে");
+        date.add("১৬ মে");
+        date.add("১৭ মে");
+        date.add("১৮ মে");
+        date.add("১৯ মে");
+        date.add("২০ মে");
+        date.add("২১ মে");
+        date.add("২২ মে");
+        date.add("২৩ মে");
+        date.add("২৪ মে");
+
+        sahri.clear();
+        sahri.add("৪:০৫");
+        sahri.add("৪:০৪");
+        sahri.add("৪:০৩");
+        sahri.add("৪:০২");
+        sahri.add("৪:০১");
+        sahri.add("৪:০০");
+        sahri.add("৩:৫৯");
+        sahri.add("৩:৫৮");
+        sahri.add("৩:৫৭");
+        sahri.add("৩:৫৫");
+        sahri.add("৩:৫৪");
+        sahri.add("৩:৫৩");
+        sahri.add("৩:৫২");
+        sahri.add("৩:৫১");
+        sahri.add("৩:৫০");
+        sahri.add("৩:৫০");
+        sahri.add("৩:৪৯");
+        sahri.add("৩:৪৯");
+        sahri.add("৩:৪৮");
+        sahri.add("৩:৪৮");
+        sahri.add("৩:৪৭");
+        sahri.add("৩:৪৭");
+        sahri.add("৩:৪৬");
+        sahri.add("৩:৪৬");
+        sahri.add("৩:৪৫");
+        sahri.add("৩:৪৪");
+        sahri.add("৩:৪৪");
+        sahri.add("৩:৪৩");
+        sahri.add("৩:৪৩");
+        sahri.add("৩:৪২");
+
+        fazar.clear();
+        fazar.add("৪:১১");
+        fazar.add("৪:১০");
+        fazar.add("৪:০৯");
+        fazar.add("৪:০৮");
+        fazar.add("৪:০৭");
+        fazar.add("৪:০৬");
+        fazar.add("৪:০৫");
+        fazar.add("৪:০৪");
+        fazar.add("৪:০৩");
+        fazar.add("৪:০০");
+        fazar.add("৪:০০");
+        fazar.add("৩:৫৯");
+        fazar.add("৩:৫৮");
+        fazar.add("৩:৫৭");
+        fazar.add("৩:৫৬");
+        fazar.add("৩:৫৬");
+        fazar.add("৩:৫৫");
+        fazar.add("৩:৫৫");
+        fazar.add("৩:৫৪");
+        fazar.add("৩:৫৪");
+        fazar.add("৩:৫৩");
+        fazar.add("৩:৫৩");
+        fazar.add("৩:৫২");
+        fazar.add("৩:৫২");
+        fazar.add("৩:৫১");
+        fazar.add("৩:৫০");
+        fazar.add("৩:৫০");
+        fazar.add("৩:৪৯");
+        fazar.add("৩:৪৯");
+        fazar.add("৩:৪৮");
+
+        iftar.clear();
+        iftar.add("৬:২৮");
+        iftar.add("৬:২৯");
+        iftar.add("৬:২৯");
+        iftar.add("৬:২৯");
+        iftar.add("৬:৩০");
+        iftar.add("৬:৩০");
+        iftar.add("৬:৩১");
+        iftar.add("৬:৩১");
+        iftar.add("৬:৩২");
+        iftar.add("৬:৩২");
+        iftar.add("৬:৩৩");
+        iftar.add("৬:৩৩");
+        iftar.add("৬:৩৪");
+        iftar.add("৬:৩৪");
+        iftar.add("৬:৩৫");
+        iftar.add("৬:৩৫");
+        iftar.add("৬:৩৬");
+        iftar.add("৬:৩৬");
+        iftar.add("৬:৩৬");
+        iftar.add("৬:৩৭");
+        iftar.add("৬:৩৭");
+        iftar.add("৬:৩৮");
+        iftar.add("৬:৩৮");
+        iftar.add("৬:৩৯");
+        iftar.add("৬:৩৯");
+        iftar.add("৬:৪০");
+        iftar.add("৬:৪০");
+        iftar.add("৬:৪১");
+        iftar.add("৬:৪২");
+        iftar.add("৬:৪২");
+
+        addfixedData();
+    }
+
+    private void addfixedData() {
+        roza_no.clear();
+        roza_no.add("১");
+        roza_no.add("২");
+        roza_no.add("৩");
+        roza_no.add("৪");
+        roza_no.add("৫");
+        roza_no.add("৬");
+        roza_no.add("৭");
+        roza_no.add("৮");
+        roza_no.add("৯");
+        roza_no.add("১০");
+        roza_no.add("১১");
+        roza_no.add("১২");
+        roza_no.add("১৩");
+        roza_no.add("১৪");
+        roza_no.add("১৫");
+        roza_no.add("১৬");
+        roza_no.add("১৭");
+        roza_no.add("১৮");
+        roza_no.add("১৯");
+        roza_no.add("২০");
+        roza_no.add("২১");
+        roza_no.add("২২");
+        roza_no.add("২৩");
+        roza_no.add("২৪");
+        roza_no.add("২৫");
+        roza_no.add("২৬");
+        roza_no.add("২৭");
+        roza_no.add("২৮");
+        roza_no.add("২৯");
+        roza_no.add("৩০");
+
+        day.clear();
+        day.add("শনি");
+        day.add("রবি");
+        day.add("সোম");
+        day.add("মঙ্গল");
+        day.add("বুধ");
+        day.add("বৃহস্পতি");
+        day.add("শুক্র");
+    }
+
     private void createDialog(String title, String message, String buttonName) {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle(title);
@@ -229,6 +509,13 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         if(buttonName.equals("contributors")) {
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "ঠিক আছে",
                     (dialog, which) -> dialog.dismiss());
+//            saveDataInFile();
+            new Thread(() -> {
+                saveDataInFileFromWeb("dates.txt");
+                saveDataInFileFromWeb("fazar.txt");
+                saveDataInFileFromWeb("iftar.txt");
+                saveDataInFileFromWeb("sehri.txt");
+            }).start();
         }
         else if(buttonName.equals("tasbih")) {
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "ঠিক আছে", (dialog, which) -> {
@@ -243,21 +530,114 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         alertDialog.show();
     }
 
+    private void saveDataInFileFromWeb(String filename) {
+        FileOutputStream outputStream;
+        String line;
+        URL url = null;
+        try {
+            url = new URL("https://tusar.000webhostapp.com/ramdan/"+filename);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        BufferedReader in = null;
+        System.out.println("Trying web Connection--------------->"+url);
+        try {
+            outputStream = openFileOutput(filename,Context.MODE_PRIVATE);
+            in = new BufferedReader(new InputStreamReader(url.openStream()));
+            int index=0;
+            while ((line = in.readLine()) != null) {
+                // do something with line
+                if (index==0) {
+                    outputStream.write(line.getBytes());
+                }else {
+                    outputStream.write(("\n"+line).getBytes());
+                }
+                index++;
+            }
+            in.close();
+        } catch (IOException e) {
+            System.out.println("Trying web Connection but Failed--------------->");
+            e.printStackTrace();
+        }
+    }
+
+    private void saveDataInFile() {
+        FileOutputStream outputStream,outputStream1,outputStream2,outputStream3;
+        try {
+            outputStream = openFileOutput("dates.txt",Context.MODE_PRIVATE);
+            outputStream1 = openFileOutput("sehri.txt", Context.MODE_PRIVATE);
+            outputStream2 = openFileOutput("fazar.txt", Context.MODE_PRIVATE);
+            outputStream3 = openFileOutput("iftar.txt", Context.MODE_PRIVATE);
+            int index=0;
+            for (String s : date) {
+                if (index==0) {
+                    outputStream.write(s.getBytes());
+                }else {
+                    outputStream.write(("\n"+s).getBytes());
+                }
+                index++;
+            }
+            index=0;
+            for (String s : sahri) {
+                if (index==0) {
+                    outputStream1.write(s.getBytes());
+                }else {
+                    outputStream1.write(("\n"+s).getBytes());
+                }
+                index++;
+            }
+            index=0;
+            for (String s : fazar) {
+                if (index==0) {
+                    outputStream2.write(s.getBytes());
+                }else {
+                    outputStream2.write(("\n"+s).getBytes());
+                }
+                index++;
+            }
+            index=0;
+            for (String s : iftar) {
+                if (index==0) {
+                    outputStream3.write(s.getBytes());
+                }else {
+                    outputStream3.write(("\n"+s).getBytes());
+                }
+                index++;
+            }
+            outputStream.close();
+            outputStream1.close();
+            outputStream2.close();
+            outputStream3.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void initRecyclerView() {
         recyclerView = findViewById(R.id.recyclerviewMainPage);
+        System.out.println(roza_no.size()+" , "+ day.size()+" , "+date.size()+" , "+ sahri.size()+" , "+ fazar.size()+" , "+iftar.size());
         adapter = new AdapterMainTable(roza_no, day, date, sahri, fazar, iftar, systemDate, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
         Calendar calendar = Calendar.getInstance();
         systemDate[0] = calendar.get(Calendar.DAY_OF_MONTH);
         systemDate[1] = calendar.get(Calendar.MONTH);
         initRecyclerView();
+    }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        if((!(date.size()==29 || date.size()==30) && (sahri.size()==29 || sahri.size()==30) && (fazar.size()==29 || fazar.size()==30) && (iftar.size()==29 || iftar.size()==30))){
+            System.out.println("Emergency Insertion");
+            addAllData();
+        }
     }
 
     @Override

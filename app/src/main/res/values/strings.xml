@@ -1,4 +1,6 @@
 <resources>
+    <string name="current_year">২০২০</string>
+    <string name="current_year_arabic">১৪৪১</string>
     <string name="app_name">মাহে রমজান ২০২০</string>
     <string name="demo">---</string>
     <string name="main_title">রমজান সময়সূচী ২০২০</string>

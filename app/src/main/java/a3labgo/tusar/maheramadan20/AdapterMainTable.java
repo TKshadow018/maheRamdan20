@@ -13,12 +13,12 @@ import java.util.Calendar;
 
 public class AdapterMainTable extends RecyclerView.Adapter<AdapterMainTable.ViewHolder> {
     Context context;
-    String[] roza_no, day, date, sahri, fazar, iftar;
+    ArrayList<String> roza_no, day, date, sahri, fazar, iftar;
     int[] systemDate = new int[2];
     String systemDayOfMonth[] = {"১","২","৩","৪","৫","৬","৭","৮","৯","১০","১১","১২","১৩","১৪","১৫","১৬","১৭","১৮","১৯","২০","২১","২২","২৩","২৪","২৫","২৬","২৭","২৮","২৯","৩০","৩১"};
     String systemMonth[] = { "জানুয়ারী", "ফেব্রুয়ারী", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"};
 
-    public AdapterMainTable(String[] roza_no, String[] day, String[] date, String[] sahri, String[] fazar, String[] iftar, int systemDate[], Context context) {
+    public AdapterMainTable(ArrayList<String> roza_no, ArrayList<String> day, ArrayList<String> date, ArrayList<String> sahri, ArrayList<String> fazar, ArrayList<String> iftar, int systemDate[], Context context) {
         this.roza_no = roza_no;
         this.day = day;
         this.date = date;
@@ -38,12 +38,12 @@ public class AdapterMainTable extends RecyclerView.Adapter<AdapterMainTable.View
 
     @Override
     public void onBindViewHolder(@NonNull AdapterMainTable.ViewHolder holder, int position) {
-        holder.roza_no.setText(roza_no[position]);
-        holder.day.setText(day[position%7]);
-        holder.date.setText(date[position]);
-        holder.sahri.setText(sahri[position]);
-        holder.fazar.setText(fazar[position]);
-        holder.iftar.setText(iftar[position]);
+        holder.roza_no.setText(roza_no.get(position));
+        holder.day.setText(day.get(position%7));
+        holder.date.setText(date.get(position));
+        holder.sahri.setText(sahri.get(position));
+        holder.fazar.setText(fazar.get(position));
+        holder.iftar.setText(iftar.get(position));
 
         Calendar calendar = Calendar.getInstance();
 //        System.out.println("day = " + calendar.get(Calendar.DAY_OF_MONTH) + " - month = " + calendar.get(Calendar.MONTH));
@@ -83,7 +83,7 @@ public class AdapterMainTable extends RecyclerView.Adapter<AdapterMainTable.View
     private int getDay(int position) {
         int day = 1;
         for(int i = 0; i<31; i++) {
-            if (date[position].split("\\s+")[0].equals(systemDayOfMonth[i]))
+            if (date.get(position).split("\\s+")[0].equals(systemDayOfMonth[i]))
                 day = i+1;
         }
         return day;
@@ -91,7 +91,7 @@ public class AdapterMainTable extends RecyclerView.Adapter<AdapterMainTable.View
     private int getMonth(int position) {
         int month = 1;
         for(int i = 0; i<12; i++){
-            if(date[position].split("\\s+")[1].equals(systemMonth[i]))
+            if(date.get(position).split("\\s+")[1].equals(systemMonth[i]))
                 month = i;
         }
         return month;
@@ -100,7 +100,7 @@ public class AdapterMainTable extends RecyclerView.Adapter<AdapterMainTable.View
 
     @Override
     public int getItemCount() {
-        return roza_no.length;
+        return roza_no.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
