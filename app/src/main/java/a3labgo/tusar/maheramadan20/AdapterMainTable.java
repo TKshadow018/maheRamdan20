@@ -39,8 +39,8 @@ public class AdapterMainTable extends RecyclerView.Adapter<AdapterMainTable.View
     @Override
     public void onBindViewHolder(@NonNull AdapterMainTable.ViewHolder holder, int position) {
         holder.roza_no.setText(roza_no.get(position));
-        holder.day.setText(day.get(position%7));
-        holder.date.setText(date.get(position));
+        holder.day.setText(date.get(position));
+        holder.date.setText(day.get(position%7));
         holder.sahri.setText(sahri.get(position));
         holder.fazar.setText(fazar.get(position));
         holder.iftar.setText(iftar.get(position));

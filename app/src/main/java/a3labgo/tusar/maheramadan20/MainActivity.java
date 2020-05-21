@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -50,15 +51,39 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     ArrayList<String> sahri;
     ArrayList<String> fazar;
     ArrayList<String> iftar;
+    char[] numberList= {'০','১','২','৩','৪','৫','৬','৭','৮','৯'};
 
     int[] systemDate = new int[2];
     RecyclerView recyclerView;
     AdapterMainTable adapter;
+    TextView titleHere;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ////////////////////////////year////////////////////////////
+        Calendar calendar = Calendar.getInstance();
+        String currentYear = String.valueOf(calendar.get(Calendar.YEAR));
+        String CurrentYearHijri = String.valueOf(calendar.get(Calendar.YEAR)-579);
+        String yearString,yearStringHijri;
+        char[] yearChar = new char[4];
+        char[] yearCharHijri = new char[4];
+        int i=0;
+        for (char ch: currentYear.toCharArray()) {
+            yearChar[i]=numberList[Character.getNumericValue(ch)];
+            i++;
+        }
+        i=0;
+        for (char ch: CurrentYearHijri.toCharArray()) {
+            yearCharHijri[i]=numberList[Character.getNumericValue(ch)];
+            i++;
+        }
+        yearString = new String(yearChar);
+        yearStringHijri = new String(yearCharHijri);
+
+        setTitle(getText(R.string.app_name)+" "+yearString);
         setContentView(R.layout.activity_main);
+
 
         ///////////////////////////////////////Data List////////////////////////////////////
         date = new ArrayList<>();
@@ -99,10 +124,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         tasbih = findViewById(R.id.tasbihBtn);
         about = findViewById(R.id.About);
         onnoelaka = findViewById(R.id.onnoElaka);
+        titleHere = findViewById(R.id.title_here);
+        titleHere.setText(getText(R.string.main_title)+" "+yearString);
 
-
-        arabicYear.setText(R.string.arabic_year);
-        englishDate.setText(R.string.english_year);
+        arabicYear.setText(R.string.roza_no);
+        englishDate.setText(R.string.english_date);
         dayOfWeek.setText(R.string.day_of_week);
         sahriLastTime.setText(R.string.last_time_of_suhoor);
         fazrTime.setText(R.string.starting_time_fazr);
