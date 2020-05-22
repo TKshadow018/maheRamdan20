@@ -39,7 +39,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import a3labgo.tusar.maheramadan20.TimerFragments.TimePickerFragment;
 
 
-public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+public class MainActivity extends AppCompatActivity {
 
     private InterstitialAd mInterstitialAd,mInterstitialAd1,mInterstitialAd2,mInterstitialAd3;
     TextView arabicYear, englishDate, dayOfWeek, sahriLastTime, fazrTime, iftarTime;
@@ -65,6 +65,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     int systemDate[] = new int[2];
     RecyclerView recyclerView;
     AdapterMainTable adapter;
+
+//    Alarm
+    private Button mOpenAlarmDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,12 +206,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
 
         buttonSetAlarm.setOnClickListener(v -> {
-
-//            Intent openClockIntent = new Intent(AlarmClock.ACTION_SET_ALARM);
-//            openClockIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            getApplicationContext().startActivity(openClockIntent);
-            DialogFragment timePicker = new TimePickerFragment();
-            timePicker.show(getSupportFragmentManager(), "time picker");
+            DialogAlarm dialogAlarm = new DialogAlarm();
+            dialogAlarm.show(MainActivity.this.getSupportFragmentManager(), "AlarmDialog");
         });
 
         about.setOnClickListener(view -> {
@@ -261,9 +260,4 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         initRecyclerView();
     }
 
-    @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        System.out.println("hour: "+hourOfDay+"  minute: "+minute);
-        //edit here
-    }
 }
