@@ -11,7 +11,7 @@
         ads:layout_constraintStart_toStartOf="parent"
         ads:layout_constraintTop_toTopOf="parent"
         ads:layout_constraintBottom_toTopOf="@+id/adView"
-        android:background="@color/coral_Reef2"
+        android:background="@color/coral_Reef"
         android:orientation="vertical">
         <TextView
             android:id="@+id/title_here"

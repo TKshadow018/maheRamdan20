@@ -31,7 +31,8 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import a3labgo.tusar.maheramadan20.TimerFragments.TimePickerFragment;
 
-public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+
+public class MainActivity extends AppCompatActivity {
 
     private InterstitialAd mInterstitialAd,mInterstitialAd1,mInterstitialAd2,mInterstitialAd3;
     TextView arabicYear, englishDate, dayOfWeek, sahriLastTime, fazrTime, iftarTime;
@@ -50,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     RecyclerView recyclerView;
     AdapterMainTable adapter;
     TextView titleHere;
+
+//    Alarm
+    private Button mOpenAlarmDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -244,8 +248,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
 
         buttonSetAlarm.setOnClickListener(v -> {
-            DialogFragment timePicker = new TimePickerFragment();
-            timePicker.show(getSupportFragmentManager(), "time picker");
+            DialogAlarm dialogAlarm = new DialogAlarm();
+            dialogAlarm.show(MainActivity.this.getSupportFragmentManager(), "AlarmDialog");
         });
 
         about.setOnClickListener(view -> {
@@ -607,10 +611,5 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         if((!(date.size()==29 || date.size()==30) && (sahri.size()==29 || sahri.size()==30) && (fazar.size()==29 || fazar.size()==30) && (iftar.size()==29 || iftar.size()==30))){
             addAllData();
         }
-    }
-
-    @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        //edit here
     }
 }
