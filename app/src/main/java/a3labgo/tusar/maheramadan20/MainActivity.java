@@ -1,34 +1,27 @@
 package a3labgo.tusar.maheramadan20;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
-
+import java.util.Objects;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -61,6 +54,16 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new Thread(() -> {
+            if (checkVersion()) {
+                new Thread(() -> {
+                    saveDataInFileFromWeb("dates.txt");
+                    saveDataInFileFromWeb("fazar.txt");
+                    saveDataInFileFromWeb("iftar.txt");
+                    saveDataInFileFromWeb("sehri.txt");
+                }).start();
+            }
+        }).start();
         ////////////////////////////year////////////////////////////
         Calendar calendar = Calendar.getInstance();
         String currentYear = String.valueOf(calendar.get(Calendar.YEAR));
@@ -108,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 String token = task.getResult().getToken();
                 // Log and toast
                 String msg = getString(R.string.msg_token_fmt, token);
-                System.out.println(msg);
             });
 
         arabicYear = findViewById(R.id.tv1);
@@ -137,13 +139,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         if(!readFomSavedFiles()){
             addAllData();
         }
-
-        System.out.println("------------------------------");
-        System.out.println("r"+date.size());
-        System.out.println("s"+sahri.size());
-        System.out.println("f"+fazar.size());
-        System.out.println("i"+iftar.size());
-        System.out.println("------------------------------");
 
 
         MobileAds.initialize(this, initializationStatus -> {
@@ -249,42 +244,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         });
 
         buttonSetAlarm.setOnClickListener(v -> {
-
-//            Intent openClockIntent = new Intent(AlarmClock.ACTION_SET_ALARM);
-//            openClockIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            getApplicationContext().startActivity(openClockIntent);
             DialogFragment timePicker = new TimePickerFragment();
             timePicker.show(getSupportFragmentManager(), "time picker");
         });
 
         about.setOnClickListener(view -> {
-//            SharedPreferences pref = getSharedPreferences("all_reqired_data",MODE_PRIVATE);
-//            SharedPreferences.Editor scoreEditor = pref.edit();
-//            Set<String> dateSet = new HashSet<>(date);
-//            Set<String> sahriSet = new HashSet<>(sahri);
-//            Set<String> fazarSet = new HashSet<>(fazar);
-//            Set<String> iftarSet = new HashSet<>(iftar);
-//            for (String temp : iftarSet){
-//                System.out.println(temp+":-> "+iftarSet.size()+" = "+iftar.size());
-//            }
-//            scoreEditor.putStringSet("fazar", fazarSet);
-//            scoreEditor.putStringSet("dateofRamdan", dateSet);
-//            scoreEditor.putStringSet("sahri", sahriSet);
-//            scoreEditor.putStringSet("iftar", iftarSet);
-//            System.out.println("((------------------------------");
-//            System.out.println("d"+date.size());
-//            System.out.println("s"+sahri.size());
-//            System.out.println("f"+fazar.size());
-//            System.out.println("i"+iftar.size());
-//            System.out.println("------------------------------))");
-//            scoreEditor.apply();
-//            System.out.println("d"+dateSet.size());
-//            System.out.println("i"+iftarSet.size());
-//            System.out.println("s"+sahriSet.size());
-//            System.out.println("f"+fazarSet.size());
-
-//            getResultsFromApi();
-
             String title = "প্রস্তুতকারক";
             String message = "আল-আমিন তুষার এবং জাহিদুল ইসলাম \n" +
                     "কম্পিউটার বিজ্ঞান ও প্রকৌশল বিভাগ \n" +
@@ -293,7 +257,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             createDialog(title, message, "contributors");
         });
 
-        // ATTENTION: This was auto-generated to handle app links.
+        // ATTENTION: This was auto-generated to handle app links.(App Indexing)
         Intent appLinkIntent = getIntent();
         String appLinkAction = appLinkIntent.getAction();
         Uri appLinkData = appLinkIntent.getData();
@@ -317,7 +281,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             BufferedReader input2 = new BufferedReader(new InputStreamReader(file2));
             BufferedReader input3 = new BufferedReader(new InputStreamReader(file3));
             if (!input.ready() || !input2.ready() || !input3.ready() || !input1.ready() ) {
-                System.out.println("input not ready");
                 throw new IOException();
             }else {
                 date.clear();
@@ -337,7 +300,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                     iftar.add(line);
                 }
                 addfixedData();
-                System.out.println("Reading from File");
             }
             input.close();
             input1.close();
@@ -352,7 +314,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
     private void addAllData() {
-        System.out.println("From Default Area");
         date.clear();
         date.add("২৫ এপ্রিল");
         date.add("২৬ এপ্রিল");
@@ -535,13 +496,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         if(buttonName.equals("contributors")) {
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "ঠিক আছে",
                     (dialog, which) -> dialog.dismiss());
-//            saveDataInFile();
-            new Thread(() -> {
-                saveDataInFileFromWeb("dates.txt");
-                saveDataInFileFromWeb("fazar.txt");
-                saveDataInFileFromWeb("iftar.txt");
-                saveDataInFileFromWeb("sehri.txt");
-            }).start();
         }
         else if(buttonName.equals("tasbih")) {
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "ঠিক আছে", (dialog, which) -> {
@@ -549,9 +503,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
                 intent.setData(Uri.parse("market://details?id=com.alasoft.tk.counter"));
                 startActivity(intent);
             });
-            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "না", (dialog, which) -> {
-                dialog.cancel();
-            });
+            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "না", (dialog, which) -> dialog.cancel());
         }
         alertDialog.show();
     }
@@ -565,11 +517,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        BufferedReader in = null;
-        System.out.println("Trying web Connection--------------->"+url);
+        BufferedReader in;
         try {
             outputStream = openFileOutput(filename,Context.MODE_PRIVATE);
-            in = new BufferedReader(new InputStreamReader(url.openStream()));
+            in = new BufferedReader(new InputStreamReader(Objects.requireNonNull(url).openStream()));
             int index=0;
             while ((line = in.readLine()) != null) {
                 // do something with line
@@ -582,67 +533,60 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             }
             in.close();
         } catch (IOException e) {
-            System.out.println("Trying web Connection but Failed--------------->");
             e.printStackTrace();
         }
     }
 
-    private void saveDataInFile() {
-        FileOutputStream outputStream,outputStream1,outputStream2,outputStream3;
+    private boolean checkVersion() {
+        FileOutputStream outputStream;
+        String line;
+        //Read from Devie
+        BufferedReader in;
+        int currentVersion=0;
         try {
-            outputStream = openFileOutput("dates.txt",Context.MODE_PRIVATE);
-            outputStream1 = openFileOutput("sehri.txt", Context.MODE_PRIVATE);
-            outputStream2 = openFileOutput("fazar.txt", Context.MODE_PRIVATE);
-            outputStream3 = openFileOutput("iftar.txt", Context.MODE_PRIVATE);
-            int index=0;
-            for (String s : date) {
-                if (index==0) {
-                    outputStream.write(s.getBytes());
-                }else {
-                    outputStream.write(("\n"+s).getBytes());
+            FileInputStream file4 = openFileInput("version.txt");
+            BufferedReader input4 = new BufferedReader(new InputStreamReader(file4));
+            if (!input4.ready()) {
+                throw new IOException();
+            }else {
+                while ((line = input4.readLine()) != null) {
+                    currentVersion = Integer.parseInt(line);
                 }
-                index++;
             }
-            index=0;
-            for (String s : sahri) {
-                if (index==0) {
-                    outputStream1.write(s.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Read from Online
+        URL url;
+        try {
+            url = new URL("https://tusar.000webhostapp.com/ramdan/version.txt");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        try {
+            in = new BufferedReader(new InputStreamReader(Objects.requireNonNull(url).openStream()));
+            while ((line = in.readLine()) != null) {
+                // do something with line //read here
+                int onlineVersion = Integer.parseInt(line);
+                if(currentVersion<onlineVersion){
+                    outputStream = openFileOutput("version.txt",Context.MODE_PRIVATE);
+                    outputStream.write(line.getBytes());
+                    return true;
                 }else {
-                    outputStream1.write(("\n"+s).getBytes());
+                    return false;
                 }
-                index++;
             }
-            index=0;
-            for (String s : fazar) {
-                if (index==0) {
-                    outputStream2.write(s.getBytes());
-                }else {
-                    outputStream2.write(("\n"+s).getBytes());
-                }
-                index++;
-            }
-            index=0;
-            for (String s : iftar) {
-                if (index==0) {
-                    outputStream3.write(s.getBytes());
-                }else {
-                    outputStream3.write(("\n"+s).getBytes());
-                }
-                index++;
-            }
-            outputStream.close();
-            outputStream1.close();
-            outputStream2.close();
-            outputStream3.close();
+            in.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
-
 
     private void initRecyclerView() {
         recyclerView = findViewById(R.id.recyclerviewMainPage);
-        System.out.println(roza_no.size()+" , "+ day.size()+" , "+date.size()+" , "+ sahri.size()+" , "+ fazar.size()+" , "+iftar.size());
         adapter = new AdapterMainTable(roza_no, day, date, sahri, fazar, iftar, systemDate, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -661,14 +605,12 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     protected void onRestart(){
         super.onRestart();
         if((!(date.size()==29 || date.size()==30) && (sahri.size()==29 || sahri.size()==30) && (fazar.size()==29 || fazar.size()==30) && (iftar.size()==29 || iftar.size()==30))){
-            System.out.println("Emergency Insertion");
             addAllData();
         }
     }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        System.out.println("hour: "+hourOfDay+"  minute: "+minute);
         //edit here
     }
 }
