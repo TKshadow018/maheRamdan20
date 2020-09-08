@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
 
         about.setOnClickListener(view -> {
             String title = "প্রস্তুতকারক";
-            String message = "আল-আমিন তুষার এবং জাহিদুল ইসলাম \n" +
+            String message = "আল-আমিন তুষার, জাহিদুল ইসলাম এবং মোঃ আলী ফাইয়াদ \n" +
                     "কম্পিউটার বিজ্ঞান ও প্রকৌশল বিভাগ \n" +
                     "জাহাঙ্গীরনগর বিশ্ববিদ্যালয় \n" +
                     "প্রতিষ্ঠানঃ 3LabGo";
