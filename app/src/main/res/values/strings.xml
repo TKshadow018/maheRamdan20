@@ -27,4 +27,5 @@
     <string name="banner_ad_unit_id_others">ca-app-pub-9447458149465385/1305642656</string>
     <string name="english_date">তারিখ</string>
     <string name="roza_no">রোজা নং</string>
+    <string name="no_supported_feature">"এই ফিচারটি আপনার মোবাইলে সমর্থিত নয়।"</string>
 </resources>
