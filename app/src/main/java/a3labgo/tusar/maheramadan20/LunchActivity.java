@@ -12,7 +12,7 @@ public class LunchActivity extends AppCompatActivity {
             public void run()
             {
                 try{
-                    sleep(500);
+                    sleep(1000);
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
                     finish();
