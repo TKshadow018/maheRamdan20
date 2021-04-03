@@ -28,4 +28,30 @@
     <string name="english_date">তারিখ</string>
     <string name="roza_no">রোজা নং</string>
     <string name="no_supported_feature">"এই ফিচারটি আপনার মোবাইলে সমর্থিত নয়।"</string>
+    <string name="year">২০২১</string>
+
+    <string name="num0">০</string>
+    <string name="num1">১</string>
+    <string name="num2">২</string>
+    <string name="num3">৩</string>
+    <string name="num4">৪</string>
+    <string name="num5">৫</string>
+    <string name="num6">৬</string>
+    <string name="num7">৭</string>
+    <string name="num8">৮</string>
+    <string name="num9">৯</string>
+
+    <string name="month1">জানুয়ারী</string>
+    <string name="month2">ফেব্রুয়ারী</string>
+    <string name="month3">মার্চ</string>
+    <string name="month4">এপ্রিল</string>
+    <string name="month5">মে</string>
+    <string name="month6">জুন</string>
+    <string name="month7">জুলাই</string>
+    <string name="month8">আগস্ট</string>
+    <string name="month9">সেপ্টেম্বর</string>
+    <string name="month10">অক্টোবর</string>
+    <string name="month11">নভেম্বর</string>
+    <string name="month12">ডিসেম্বর</string>
+
 </resources>
