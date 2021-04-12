@@ -100,10 +100,8 @@ public class DialogAlarm extends DialogFragment {
                         startActivity(alarmIntent);
                     }
                 }catch(Exception e){
-                    Toast.makeText(getActivity().getParent().getApplicationContext(), getText(no_supported_feature),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getText(no_supported_feature),Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
 

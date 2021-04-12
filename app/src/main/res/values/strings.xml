@@ -1,4 +1,5 @@
 <resources>
+    <string name="facebook_app_id">477447330275035</string>
     <string name="app_name">মাহে রমজান</string>
     <string name="demo">---</string>
     <string name="main_title">রমজান সময়সূচী</string>

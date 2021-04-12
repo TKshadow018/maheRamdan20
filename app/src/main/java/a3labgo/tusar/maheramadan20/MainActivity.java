@@ -1,17 +1,17 @@
 package a3labgo.tusar.maheramadan20;
 import android.app.AlertDialog;
-import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -22,14 +22,21 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
+
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
-import a3labgo.tusar.maheramadan20.TimerFragments.TimePickerFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -58,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+        MobileAds.initialize(this);
+
         new Thread(() -> {
             if (checkVersion()) {
                 new Thread(() -> {
@@ -145,7 +156,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        MobileAds.initialize(this, initializationStatus -> {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {}
         });
         mAdView = findViewById(R.id.adView);
         adRequest = new AdRequest.Builder().build();
@@ -154,52 +167,97 @@ public class MainActivity extends AppCompatActivity {
         ///////////////////////////////////////////ad initialize/////////////////////////////////
 
         //MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd1 = new InterstitialAd(this);
-        mInterstitialAd2 = new InterstitialAd(this);
-        mInterstitialAd3 = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-9447458149465385/9820148847");                 //for release
-        mInterstitialAd1.setAdUnitId("ca-app-pub-9447458149465385/3820597142");                 //for release
-        mInterstitialAd2.setAdUnitId("ca-app-pub-9447458149465385/4978885708");                 //for release
-        mInterstitialAd3.setAdUnitId("ca-app-pub-9447458149465385/1039640693");                 //for release
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        mInterstitialAd1.loadAd(new AdRequest.Builder().build());
-        mInterstitialAd2.loadAd(new AdRequest.Builder().build());
-        mInterstitialAd3.loadAd(new AdRequest.Builder().build());
-        //mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");               //for test
-        //mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
+        //9820148847
+        InterstitialAd.load(this,"ca-app-pub-9447458149465385/9820148847", adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                mInterstitialAd = interstitialAd;
+                mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        Intent intent = new Intent(getApplicationContext(), OtherAreaActivity.class);
+                        startActivity(intent);
+                    }
 
+                    @Override
+                    public void onAdShowedFullScreenContent() {
+                        mInterstitialAd = null;
+                    }
+                });
+            }
 
-        mInterstitialAd.setAdListener(new AdListener() {
-            public void onAdClosed() {
-                Intent intent2 = new Intent(getApplicationContext(), OtherAreaActivity.class);
-                startActivity(intent2);
-                //mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                mInterstitialAd = null;
             }
         });
-        mInterstitialAd1.setAdListener(new AdListener() {
-            public void onAdClosed() {
-                Intent intent2 = new Intent(getApplicationContext(), DoaActivity.class);
-                startActivity(intent2);
-                //mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
-                mInterstitialAd1.loadAd(new AdRequest.Builder().build());
+        InterstitialAd.load(this,"ca-app-pub-9447458149465385/10331737123820597142", adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                mInterstitialAd1 = interstitialAd;
+                mInterstitialAd1.setFullScreenContentCallback(new FullScreenContentCallback(){
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        Intent intent = new Intent(getApplicationContext(), DoaActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAdShowedFullScreenContent() {
+                        mInterstitialAd1 = null;
+                    }
+                });
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                mInterstitialAd1 = null;
             }
         });
-        mInterstitialAd2.setAdListener(new AdListener() {
-            public void onAdClosed() {
-                Intent intent2 = new Intent(getApplicationContext(), KaronActivity.class);
-                startActivity(intent2);
-                //mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
-                mInterstitialAd2.loadAd(new AdRequest.Builder().build());
+        InterstitialAd.load(this,"ca-app-pub-9447458149465385/4978885708", adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                mInterstitialAd2 = interstitialAd;
+                mInterstitialAd2.setFullScreenContentCallback(new FullScreenContentCallback(){
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        Intent intent = new Intent(getApplicationContext(), KaronActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAdShowedFullScreenContent() {
+                        mInterstitialAd2 = null;
+                    }
+                });
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                mInterstitialAd2 = null;
             }
         });
-        mInterstitialAd3.setAdListener(new AdListener() {
-            public void onAdClosed() {
-                Intent intent2 = new Intent(getApplicationContext(), SortoActivity.class);
-                startActivity(intent2);
-                //mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
-                mInterstitialAd3.loadAd(new AdRequest.Builder().build());
+        InterstitialAd.load(this,"ca-app-pub-9447458149465385/1039640693", adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                mInterstitialAd3 = interstitialAd;
+                mInterstitialAd3.setFullScreenContentCallback(new FullScreenContentCallback(){
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        Intent intent = new Intent(getApplicationContext(), SortoActivity.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onAdShowedFullScreenContent() {
+                        mInterstitialAd3 = null;
+                    }
+                });
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                mInterstitialAd3 = null;
             }
         });
 
@@ -616,4 +674,5 @@ public class MainActivity extends AppCompatActivity {
             addAllData();
         }
     }
+
 }
