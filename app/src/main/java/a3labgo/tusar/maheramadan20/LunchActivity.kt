@@ -1,5 +1,4 @@
 package a3labgo.tusar.maheramadan20
-
 import a3labgo.tusar.maheramadan20.databinding.ActivityLuncherBinding
 import android.content.Intent
 import android.graphics.Color
@@ -24,9 +23,9 @@ class LunchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityLuncherBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val current_year = Calendar.getInstance().get(Calendar.YEAR).toString();
-        val current_date = Calendar.getInstance().get(Calendar.DAY_OF_MONTH).toString();
-        val current_month = Calendar.getInstance().get(Calendar.MONTH).toString();
+        val currentYear = Calendar.getInstance().get(Calendar.YEAR).toString()
+        val currentDate = Calendar.getInstance().get(Calendar.DAY_OF_MONTH).toString()
+        val currentMonth = Calendar.getInstance().get(Calendar.MONTH).toString()
 
         val predefinedColorArr = arrayOf( Color.RED, Color.GRAY, Color.CYAN, Color.GREEN, Color.YELLOW, Color.MAGENTA, Color.WHITE)
         val rand1: Int = (Math.random() * (predefinedColorArr.size - 0)).toInt()
@@ -35,21 +34,22 @@ class LunchActivity : AppCompatActivity() {
         val rand4: Int = (Math.random() * (predefinedColorArr.size - 0)).toInt()
 
 
-        val wordtoSpan: Spannable = SpannableString(getBanglaYearOrDate(current_year))
+        val wordtoSpan: Spannable = SpannableString(getBanglaYearOrDate(currentYear))
         wordtoSpan.setSpan(ForegroundColorSpan(predefinedColorArr[rand1]), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         wordtoSpan.setSpan(ForegroundColorSpan(predefinedColorArr[rand2]), 1, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         wordtoSpan.setSpan(ForegroundColorSpan(predefinedColorArr[rand3]), 2, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         wordtoSpan.setSpan(ForegroundColorSpan(predefinedColorArr[rand4]), 3, 4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.tagLine.setText(wordtoSpan)
+        binding.tagLine.text = wordtoSpan
 
-        binding.tagLineSub.text = getBanglaYearOrDate(current_date)+" "+getBangleaMonth(current_month)
+        val tagLine = getBanglaYearOrDate(currentDate)+" "+getBangleaMonth(currentMonth)
+        binding.tagLineSub.text = tagLine
 
         middleAnimation = AnimationUtils.loadAnimation(this@LunchActivity, R.anim.middle_animation)
         bottomAnimation = AnimationUtils.loadAnimation(this@LunchActivity, R.anim.bottom_animation)
         binding.tagLine.animation = middleAnimation
         binding.tagLineSub.animation = bottomAnimation
 
-        Handler(Looper.getMainLooper()).postDelayed(Runnable {
+        Handler(Looper.getMainLooper()).postDelayed({
             val i = Intent(this@LunchActivity, MainActivity::class.java)
             startActivity(i)
             finish()
@@ -59,10 +59,9 @@ class LunchActivity : AppCompatActivity() {
     private fun getBanglaYearOrDate(currentYear: String): String {
         var banglaSting = ""
         for (i in currentYear.indices) {
-            val temp = "num"+(currentYear.get(i))
+            val temp = "num"+(currentYear[i])
 //            val bangleChar = string::class.java.getField(temp).getInt(null)
             val bangleChar = getText(applicationContext.resources.getIdentifier(temp, "string", "a3labgo.tusar.maheramadan20"))
-            println("" + i + "---" + temp + " " + bangleChar)
             banglaSting += bangleChar.toString()
         }
         return banglaSting
@@ -71,10 +70,8 @@ class LunchActivity : AppCompatActivity() {
     private fun getBangleaMonth(currentMonth: String): String {
         var banglaSting = ""
         for (i in currentMonth.indices) {
-            val temp = "month"+(currentMonth.get(i)+1)
-//            val bangleChar = string::class.java.getField(temp).getInt(null)
+            val temp = "month"+(currentMonth[i] +1)
             val bangleChar = getText(applicationContext.resources.getIdentifier(temp, "string", "a3labgo.tusar.maheramadan20"))
-            println("" + i + "---" + temp + " " + bangleChar)
             banglaSting += bangleChar.toString()
         }
         return banglaSting

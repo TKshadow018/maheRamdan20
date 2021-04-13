@@ -48,9 +48,9 @@
         <activity android:name=".SortoActivity" />
         <activity android:name=".OtherAreaActivity" />
 
-        <receiver android:name=".TimerFragments.AlarmReceiver" />
+        <receiver android:name=".timerFragments.AlarmReceiver" />
 
-        <service android:name=".Service.FirebaseMessaging">
+        <service android:name=".service.FirebaseMessaging">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

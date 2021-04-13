@@ -54,5 +54,9 @@
     <string name="month10">অক্টোবর</string>
     <string name="month11">নভেম্বর</string>
     <string name="month12">ডিসেম্বর</string>
+    <string name="timeDiff">অন্য জেলাগুলোর সময়ের পার্থক্য</string>
+    <string name="district">জেলা</string>
+    <string name="sehri_diff">সেহরির সময়ের পার্থক্য</string>
+    <string name="iftar_diff">ইফতারের সময়ের পার্থক্য</string>
 
 </resources>
